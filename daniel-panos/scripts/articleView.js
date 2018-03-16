@@ -52,8 +52,8 @@ articleView.handleCategoryFilter = function() {
   });
 };
 
-articleView.handleMainNav =() => {
-  $('.main-nav').on('click', '.tab', () => {
+articleView.handleMainNav = function() {
+  $('.main-nav').on('click', '.tab', function() {
     $('.tab-content').hide();
     $(`#${$(this).data('content')}`).fadeIn();
   });
@@ -61,9 +61,9 @@ articleView.handleMainNav =() => {
   $('.main-nav .tab:first').click();
 };
 
-articleView.setTeasers=() => {
+articleView.setTeasers = function() {
   $('.article-body *:nth-of-type(n+2)').hide();
-  $('article').on('click', 'a.read-on', e => {
+  $('article').on('click', 'a.read-on', function(e) {
     e.preventDefault();
     if ($(this).text() === 'Read on →') {
       $(this).parent().find('*').fadeIn();
@@ -78,10 +78,10 @@ articleView.setTeasers=() => {
   });
 };
 
-$(document).ready=() => {
+$(document).ready(function() {
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
-};
+})
